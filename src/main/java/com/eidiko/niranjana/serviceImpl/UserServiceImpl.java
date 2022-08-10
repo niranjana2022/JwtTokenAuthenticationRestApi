@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.eidiko.niranjana.model.User;
+import com.eidiko.niranjana.model.UserRequest;
 import com.eidiko.niranjana.repo.UserRepository;
 import com.eidiko.niranjana.service.IUserService;
 
@@ -31,9 +32,11 @@ public class UserServiceImpl implements IUserService,UserDetailsService {
 	@Override
 	public Integer saveUser(User user) 
 	{
+		log.info("username is : "+user.getName());
 		log.info("password is : "+user.getPassword());
+		//user.setName(pwdEncoder.encode(user.getName()));//Only This line is using for "encode" the password and stored in DB which is comming from request body
 		user.setPassword(pwdEncoder.encode(user.getPassword()));//Only This line is using for "encode" the password and stored in DB which is comming from request body
-		log.info("password is : "+user.getPassword());
+		log.info("password as Encoded form : "+user.getPassword());
 		return repo.save(user).getId();
 	}
 
@@ -59,5 +62,15 @@ public class UserServiceImpl implements IUserService,UserDetailsService {
 	public Optional<User> findByUsername(String user) {
 		return repo.findByUsername(user);
 	}
+
+
+	@Override
+	public int saveTokenInDB(int id, String token) {
+		// TODO Auto-generated method stub
+		return repo.saveToken(id, token);
+	}
+
+
+
 	
 }

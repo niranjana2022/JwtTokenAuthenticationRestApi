@@ -51,7 +51,7 @@ public class UserRestController {
 	public ResponseEntity<String> saveuser(@RequestBody User user)
 	{
 		Integer id  = service.saveUser(user);
-		String body = "User "+id+" saved";
+		String body = "User "+id+" saved In DB";
 		System.out.println(body);
 		return new ResponseEntity<String>(body,HttpStatus.OK);
 		

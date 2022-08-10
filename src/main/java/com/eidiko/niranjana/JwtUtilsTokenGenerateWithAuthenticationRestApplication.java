@@ -5,11 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+
 @SpringBootApplication
-public class JwtUtilsTokenGenerateWithoutAuthenticationRestApplication {
+//@EnableSwagger2
+public class JwtUtilsTokenGenerateWithAuthenticationRestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtUtilsTokenGenerateWithoutAuthenticationRestApplication.class, args);
+		SpringApplication.run(JwtUtilsTokenGenerateWithAuthenticationRestApplication.class, args);
+		System.out.println("Swagger Application Started Successfully...");
 	}
 
 	@Bean
